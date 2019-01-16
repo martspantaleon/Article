@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ArticleModelStoreContainer" CdmEntityContainer="ArticleEntities">
+    <EntitySetMapping Name="Articles">
+      <EntityTypeMapping TypeName="ArticleModel.Article">
+        <MappingFragment StoreEntitySet="Article">
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="imageHeader" ColumnName="imageHeader" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ByLine" ColumnName="ByLine" />
+          <ScalarProperty Name="isCarousel" ColumnName="isCarousel" />
+          <ScalarProperty Name="isImportant" ColumnName="isImportant" />
+          <ScalarProperty Name="PageContent" ColumnName="PageContent" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="PublishStartDate" ColumnName="PublishStartDate" />
+          <ScalarProperty Name="PublishStartTime" ColumnName="PublishStartTime" />
+          <ScalarProperty Name="PublishEndDate" ColumnName="PublishEndDate" />
+          <ScalarProperty Name="PublishEndTime" ColumnName="PublishEndTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="ArticleModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

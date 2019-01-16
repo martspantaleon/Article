@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "Add Article";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <style>
+        label {
+            font-weight: unset;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="container" style="max-width:1170px;">
+            <form>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="inputCategory" class="form-control" style="max-width: 730px;">
+                                <option selected>Select one</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="padding-bottom: 3rem !important;">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gridCheckCarousel">
+                                <label class="form-check-label" for="gridCheckCarousel">
+                                    Show article in carousel
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gridCheckImportant">
+                                <label class="form-check-label" for="gridCheckImportant">
+                                    This article is important
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Header Image</label>
+                            <input class="form-control" type="text" style="max-width: 730px;" />
+                        </div>
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input class="form-control" type="text" style="max-width: 730px;" />
+                        </div>
+                        <div class="form-group">
+                            <label>By Line Text</label>
+                            <textarea class="form-control" id="textArea1" rows="3" style="max-width: 730px;"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Content Image</label>
+                            <input class="form-control" type="text" style="max-width: 730px;" />
+                        </div>
+                        <div class="form-group">
+                            <label>Page Content</label>
+                            <textarea class="form-control summernote" id="textArea1" rows="3" style="max-width: 730px;"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label>Author</label>
+                            <input class="form-control" type="text" />
+                        </div>
+                        <div class="form-group">
+                            <label>Publish Date</label>
+                            <input class="form-control" type="date" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Publish Start time</label>
+                            <input class="form-control" type="time" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>End Date</label>
+                            <input class="form-control" type="date" />
+                        </div>
+                        <div class="form-group">
+                            <label>Publish End time</label>
+                            <input class="form-control" type="time" />
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-light">Create</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+
+<script>
+    $('.summernote').summernote({
+        height: 500,
+        disableResizeEditor: true
+
+    });
+</script>

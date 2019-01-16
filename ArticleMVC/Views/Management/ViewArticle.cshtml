@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Article.Models.ArticleViewModel>
+
+@{
+    ViewBag.Title = "ViewArticle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid px-0">
+    @foreach (var item in Model)
+    {
+    <div class="col-12 header-img-container px-0">
+        <img class="d-block w-100 header-img" src="@Html.DisplayFor(modelItem => item.ImageHeader)">
+    </div>
+
+    <div class="container mt-5">
+        <div class="m-2">
+            <span class="">@Html.DisplayFor(modelItem => item.Author), </span>
+            <span class="mr-2">@Html.DisplayFor(modelItem => item.PublishStartDate)</span>
+            <span>@Html.DisplayFor(modelItem => item.Category)</span>
+        </div>
+        <h2 class="m-2 title-color">
+          @Html.DisplayFor(modelItem => item.Title)
+        </h2>
+        <div class="m-2">
+            <b>@Html.DisplayFor(modelItem => item.ByLine)</b>
+        </div>
+
+        <div class="m-2">
+            <p>@Html.DisplayFor(modelItem => item.PageContent)</p>
+        </div>
+        <a class="btn bg-light border p-2 nodecor" href="/Home/Index">Back to Management</a>
+        <a class="btn bg-light border p-2 nodecor" href="/Management/EditArticle/@Html.DisplayFor(modelItem => item.ArticleID)">Edit</a>
+    </div>
+
+    }
+
+
+</div>

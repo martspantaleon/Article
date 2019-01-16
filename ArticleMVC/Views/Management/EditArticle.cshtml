@@ -1,0 +1,133 @@
+﻿@model IList<Article.Models.ArticleViewModel>
+
+@{
+    ViewBag.Title = "Edit Article";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <style>
+        .container {
+            max-width: 1140px !important;
+        }
+    </style>
+</head>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container-fluid px-0">
+        <div class="container pt-5">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.First().ArticleID)
+
+            <div class="row">
+                <div class="col-8">
+                    <div class="form-group">
+                        <label for="Category">Category</label>
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.First().Category, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.First().Category, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                        <input data-val="true" data-val-required="The Show article on carousel field is required." id="Article_IsCarousel" name="Article.IsCarousel" type="checkbox" value="true"><input name="Article.IsCarousel" type="hidden" value="false">
+                        Show article on carousel
+                    </div>
+                    <div class="form-group pb-5">
+                        <input data-val="true" data-val-required="The This article is important field is required." id="Article_IsImportant" name="Article.IsImportant" type="checkbox" value="true"><input name="Article.IsImportant" type="hidden" value="false">
+                        This article is important
+                    </div>*@
+
+                    <div class="form-group">
+                        <label for="ImagaeHeader">Image Header</label>
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.First().ImageHeader, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.First().ImageHeader, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Title">Title</label>
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.First().Title, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.First().Title, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ByLine">By Line</label>
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.First().ByLine, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.First().ByLine, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                        <label for="ContentImage">Content Image</label>
+                        <input class="form-control text-box single-line" id="Article_ContentImage" name="Article.ContentImage" type="text" value="">
+                    </div>*@
+
+                    <div class="form-group">
+                        <label for="PageContent">Page Content</label>
+                        <div class="form-group">
+                            @Html.TextAreaFor(model => model.First().PageContent, new { htmlAttributes = new { @class = "form-control"} })
+                            @Html.ValidationMessageFor(model => model.First().PageContent, "", new { @class = "text-danger" })
+                        </div>
+                    </div> 
+
+
+                </div>
+            
+
+                <div class="col-4">
+                    <label for="ImagaeHeader">Author</label>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.First().Author, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.First().Author, "", new { @class = "text-danger" })
+                    </div>
+
+                    <label for="ImagaeHeader">Publish Start Date</label>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.First().PublishStartDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.First().PublishStartDate, "", new { @class = "text-danger", @type = "date" })
+                    </div>
+
+                    <label for="ImagaeHeader">Publish Start Time</label>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.First().PublishStartTime, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.First().PublishStartTime, "", new { @class = "text-danger", @type = "date" })
+                    </div>
+
+                    <label for="ImagaeHeader">Publish End Date</label>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.First().PublishEndDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.First().PublishEndDate, "", new { @class = "text-danger", @type = "date" })
+                    </div>
+
+                    <label for="ImagaeHeader">Publish End Time</label>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.First().PublishEndTime, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.First().PublishEndTime, "", new { @class = "text-danger", @type = "date" })
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" value="Save" class="btn border p-2 nodecor bg-light">Save</button>
+                        <a class="btn bg-light border p-2 nodecor" href="/Home/Index">Back to Management</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+    $('#PageContent').summernote({
+        height: 500,
+        disableResizeEditor: true
+
+    });
+</script>

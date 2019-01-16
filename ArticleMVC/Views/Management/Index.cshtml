@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Article.Models.ArticleViewModel>
+
+@{
+    ViewBag.Title = "Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <style>
+        .container {
+            max-width: 1140px !important;
+        }
+    </style>
+</head>
+
+
+<div class="container-fluid px-0">
+
+    <div class="container pt-5">
+        <div class="row justify-content-between mb-5">
+            <div class="col-sm-4 d-flex text-center px-0 border-0">
+                <a class="btn-sm bg-light border p-2 nodecor" href="@Url.Action("AddArticle", "Management")">+ New Article</a>
+            </div>
+
+            <div class="input-group col-sm-8 d-flex justify-content-end px-0">
+                <span class="btn mr-0">Sort By</span>
+                <form action="/Home/Index" method="get">
+                    <select class="btn btn-default border" id="sortOrder" name="sortOrder" onchange="this.form.submit()" value="ArticleTitle">
+                        <option selected="selected" value="ArticleTitle">Title</option>
+                        <option value="Author">Author</option>
+                        <option value="Category">Category</option>
+                        <option value="PublishDate">Publish Date</option>
+                        <option value="EndDate">End Date</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                int i = 0;
+                foreach (var item in Model)
+                {
+                    <div class="container rounded d-flex border-0 @(i%2==0?"bg-light":"") px-1 py-3">
+                        <div class="col-9 px-0">
+                            <div class="container py-1">
+                                <h5 class="w-100 text-truncate title-color"><a class="nodecor title-color" href="/Management/ViewArticle/@Html.DisplayFor(modelItem => item.ArticleID)">@Html.DisplayFor(modelItem => item.Title)</a></h5>
+                                <div class="w-100 text-secondary my-1">
+                                    @Html.DisplayFor(modelItem => item.Author)
+                                </div>
+                                <div class="w-100 text-truncate" id="PageContent">@Html.DisplayFor(modelItem => item.PageContent)</div>
+
+
+                            </div>
+                            <div class="container d-flex justify-content-between py-1 text-secondary">
+                                <span>Publish Date: @Html.DisplayFor(modelItem => item.PublishStartDate)</span><span>End Date: @Html.DisplayFor(modelItem => item.PublishEndDate)</span>
+                            </div>
+                        </div>
+                        <div class="col-3 px-0 d-flex flex-column justify-content-between">
+                            <div class="d-flex justify-content-between">
+                                <div><b>@Html.DisplayFor(modelItem => item.Category)</b></div>
+                                <div>
+                                    <i class="fa fa-lock p-1"></i>
+
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <a class="btn-sm bg-light border m-1 nodecor" href="/Management/EditArticle/@Html.DisplayFor(modelItem => item.ArticleID)">Update</a>
+                                <a class="btn-sm bg-light border m-1 nodecor" href="#">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                    i++;
+                }
+            }
+
+        </div>
+
+
+    </div>
+    <div class="pageNav w-100 d-flex justify-content-center py-2">
+        <div class="col-1 pr-0 d-flex justify-content-end">
+
+        </div>
+        <div class="p-2 text-center">1</div>
+        <div class="col-1 pl-0">
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var regex = "/<(.|\n)*?>/";
+        var test = document.getElementById("PageContent").innerHTML.replace("/<(.|\n)*?>/", "");
+
+        console.log(test);
+    });
+</script>

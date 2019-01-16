@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Article.Models.ArticleViewModel>
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <style>
+        .container {
+            max-width: 1140px !important;
+        }
+    </style>
+</head>
+
+<div class="container-fluid px-0">
+
+    <div>
+        <div id="carouselSlides" class="carousel slide" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#carouselSlides" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselSlides" data-slide-to="1"></li>
+            </ul>
+
+            <div class="carousel-inner">
+                @{
+                    int i = 0;
+                    foreach (var item in Model)
+                    {
+                        <div class="carousel-item @(i%2==0?"active":"")">
+                            <div class="col-12 carouselContainer px-0">
+                                <img class="d-block w-100 carouselImg" src="@Html.DisplayFor(modelItem => item.ImageHeader)" alt="@Html.DisplayFor(modelItem => item.ImageHeader)">
+                            </div>
+                            <div class="carousel-caption text-left">
+                                <h3><a class="nodecor title-color" href="/Management/ViewArticle/@Html.DisplayFor(modelItem => item.ArticleID)">@Html.DisplayFor(modelItem => item.Title)</a></h3>
+                            </div>
+                        </div>
+                        i++;
+                    }
+                }
+            </div>
+
+            <a class="carousel-control-prev" href="#carouselSlides" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#carouselSlides" role="button" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+
+        </div>
+    </div>
+    <div id="container1" class="container mt-5">
+        <div class="row p-2">
+            @foreach (var item in Model)
+            {
+                <div class="col-6 p-3">
+                    <div>
+                        <span class="mr-2 font-weight-bold">@Html.DisplayFor(modelItem => item.Category)</span>
+
+                    </div>
+                    <div class="tiles-2">
+                        <img class="d-block w-100 rounded tilesImg-2" src="@Html.DisplayFor(modelItem => item.ImageHeader)" alt="@Html.DisplayFor(modelItem => item.ImageHeader)">
+
+                    </div>
+                    <h3 class="wrap-2 title-color">
+                        <a class="nodecor title-color" href="/Management/ViewArticle/@Html.DisplayFor(modelItem => item.ArticleID)">@Html.DisplayFor(modelItem => item.Title)</a>
+
+                    </h3>
+                </div>
+            }
+        </div>
+        <div class="row p-2">
+
+
+        </div>
+        <input data-val="true" data-val-number="The field TotalPages must be a number." data-val-required="The TotalPages field is required." id="totalPages" name="totalPages" type="hidden" value="1"><input id="pageNumber" name="pageNumber" type="hidden" value="2">
+    </div>
+    <div class="container d-flex justify-content-center" id="container2">
+
+    </div>
+
+
+
+
+
+
+</div>
